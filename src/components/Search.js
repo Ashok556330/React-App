@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const Search  = () => {
-    const [filteredItems, setFiteredItems] = useState([]);
     return (
     <div>
         <input type="text" className="serch-box"/>
