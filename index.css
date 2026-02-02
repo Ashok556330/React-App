@@ -1,3 +1,59 @@
-#heading {
-    color: red;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid;
+}
+.logo {
+    width: 200px;
+    height: 200px;
+}
+.nav-item {
+    padding: 0px 20px;
+}
+
+.nav-item > ul {
+    font-size: 24px;
+    display: flex;
+    list-style-type: none;
+}
+.nav-item > ul > li {
+    padding: 10px;
+    margin: 10px;
+}
+.restaurent-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.res-logo{
+    width: 100%;
+}
+.res-card {
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    height: 450px;
+    background-color: #f0f0f0;
+}
+.res-card:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
+.filter-btn {
+    margin: 10;
+    cursor: pointer;
+}
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card {
+    height: 400px;
+    width: 200px;
+    background-color: #f0f0f0;
+    margin: 10px;
+}
+.login-btn {
+    padding: 0 20px;
+    cursor: pointer;
 }
