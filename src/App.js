@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -6,7 +6,10 @@ import Error from "./components/Error";
 import ContactUs from "./components/ContactUs";
 import RestaurentMenu from "./components/RestaurentMenu";
 import CartPage from "./components/Cart";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import appStore from "./utils/appStore";
+import UserContext from "./utils/UserContext";
 
  // Chunking
  // Lazy Loading or Ondemand loading
@@ -19,12 +22,28 @@ const Grocery = lazy (() => import("./components/Grocery"));
 const AboutUs = lazy(() => import("./components/AboutUs"))
 
 const Applayout = () => {
+
+	const [userName, setUserName] = useState();
+	
+	// Authentication
+	useEffect(() => {
+		// Make an Api call and send username and password
+		const data ={
+			name: "Ashok V"
+		}
+		setUserName(data.name);
+	}, [])
 	return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
-	);
+		<Provider store={appStore}>
+			<UserContext.Provider value={{ loggedInUser: userName }}>
+				<div className="app">
+				<Header />
+				<Outlet />
+				</div>
+			</UserContext.Provider>
+		</Provider>
+			);
+
 }
 
 const appRouter = createBrowserRouter([

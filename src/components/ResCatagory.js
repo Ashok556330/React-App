@@ -1,11 +1,8 @@
-import { useState } from "react";
 import ItemList from "./ItemList";
-const ResCatagory = (data) => {
-    const [showItem, setShowItem] = useState(false);
+const ResCatagory = ({data, showItems, setShowIndex}) => {
     
     const handleClick = () => {
-       console.log("Show items");
-       setShowItem(!showItem);
+       setShowIndex();
     }
 
     return(
@@ -14,11 +11,11 @@ const ResCatagory = (data) => {
                 <div className="flex justify-between cursor-pointer"
                 onClick={handleClick}
                 >
-                    <span className="font-bold text-lg">{data?.data.title} {data?.data?.itemCards.length}</span>
+                    <span className="font-bold text-lg">{data?.title} {data?.itemCards.length}</span>
                     <span>⬇️</span>
                 </div>
             
-                {showItem && <ItemList items={data?.data?.itemCards} />}
+                {showItems && <ItemList items={data?.itemCards} />}
             </div>
         </div>
     )

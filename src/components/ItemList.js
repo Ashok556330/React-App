@@ -1,6 +1,15 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
+  
+const dispatch = useDispatch();
+
+const handleAddItemInCart = (item) => {
+  dispatch(addItem(item));
+}
+
   return (
     <div className="overflow-x-hidden">
       {items?.map((item) => {
@@ -46,8 +55,9 @@ const ItemList = ({ items }) => {
                              bg-white text-green-600 border border-green-600
                              px-6 py-1 text-sm font-bold rounded-md
                              shadow hover:bg-green-600 hover:text-white transition mb-4"
+                onClick={() => handleAddItemInCart(item)}             
                 >
-                  ADD
+                  ADD +
                 </button>
               </div>
 

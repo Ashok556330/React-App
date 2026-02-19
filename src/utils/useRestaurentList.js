@@ -15,3 +15,45 @@ const useRestaurentList = () => {
 }
 
 export default useRestaurentList;
+
+
+// import { useState, useEffect } from "react";
+
+// const UserTable = () => {
+//     const [users, setUsers] = useState(" ");
+
+//     useEffect(() => {
+//         userList();
+//     }, []);
+
+//     const userList = async () => {
+//         const data = await fetch("vv");
+//         const jsonData = data.json();
+//         setUsers(jsonData);
+//     }
+
+//     return (
+//         <div>
+// 					<table>
+//             <thead>
+//               <tr>
+//                 <th>ID</th>
+//                 <th>Name</th>  
+//               </tr>
+//             </thead>
+//             <tbody>
+//               {users.map((user) => (
+//                 <tr>
+//                   <td>{user.id}</td>
+//                   <td>{user.name}</td>
+//                 </tr>
+//               ))}
+              
+//             </tbody>
+// 					</table>
+//         </div>
+//     )
+// }
+
+// export default UserTable;
+

@@ -2,10 +2,15 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./shimmer";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
 import ResCatagory from "./ResCatagory";
+import { useState } from "react";
+import { useState } from "react";
+import { flushSync } from "react-dom";
 
 const RestaurentMenu = () => {
   const {resId} = useParams();
   const resInfo = useRestaurentMenu(resId);
+
+  const [showIndex, setShowIndex] = useState(0);
 
   if (resInfo === null ) return <Shimmer />
 
@@ -29,8 +34,14 @@ const RestaurentMenu = () => {
       <div className="text-center pt-16">
           <h3 className="font-bold my-10 text-2xl">{name}</h3>
           <h5>{cuisines?.join(", ")} - {costForTwoMessage}</h5>
-          {categories.map((catagory) => {
-            return <ResCatagory key={catagory.card.card.title} data={catagory?.card?.card} />;
+          {categories.map((catagory, index) => {
+            // controlled component parant is controlling resCatagory comp
+            return <ResCatagory 
+            key={catagory.card.card.title} 
+            data={catagory?.card?.card} 
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
+            />
           })}
       </div>
   )
